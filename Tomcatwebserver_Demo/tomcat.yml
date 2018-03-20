@@ -1,0 +1,66 @@
+---
+- name: Tomcat web servr deployment
+  hosts: localhost
+
+  tasks:
+
+  - name: Pre-req's for Tomcat to ensure no sample war is present
+    file: path=/opt/tomcat/apache-tomcat-8.5.29/webapps/sample.war state=absent
+
+  - name: Install prerequisties
+    yum: name=java-1.8.0-openjdk state=present
+
+  - name: Installing wget
+    yum: name=wget state=present
+
+  - name: Creating Directory structure
+    file: name=/opt/tomcat state=directory
+
+  - name: Downloading Tomcat Binaries
+    get_url: url=http://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.29/bin/apache-tomcat-8.5.29.tar.gz dest=/opt/tomcat
+
+  - name: Extracting Tomcat
+    shell: cd /opt/tomcat; tar -xvzf apache-tomcat-8.5.29.tar.gz; cd apache-tomcat-8.5.29/bin/; chmod 777 startup.sh shutdown.sh catalina.sh
+
+  - name: War deployment
+    shell: cd /opt/tomcat/apache-tomcat-8.5.29/webapps/; wget https://tomcat.apache.org/tomcat-8.0-doc/appdev/sample/sample.war; cd /opt/tomcat/apache-tomcat-8.5.29/bin; sleep 20
+
+  - name: Customzing Tomcat Page
+    lineinfile:
+      path: /opt/tomcat/apache-tomcat-8.5.29/webapps/sample/index.html
+      regexp: ^<h1>
+      line: <h1>Hello All, Welcome to Agile Gurugram 2018. My name is Yogesh Raheja and I am demonstarting the future for IT infrastructure vertical with DevOps - IaC</h1>
+
+  - name: Downloading Images for the UI
+    get_url: url=http://www.lmcsoftwaresolutions.com/image/devops_anim.gif dest=/opt/tomcat/apache-tomcat-8.5.29/webapps/sample/images
+
+  - name: Customzing Images for the UI
+    lineinfile:
+      path: /opt/tomcat/apache-tomcat-8.5.29/webapps/sample/index.html
+      regexp: ^<img
+      line: <img src="images/devops_anim.gif"> 
+
+  - name: Removing unwanted lines
+    lineinfile: path=/opt/tomcat/apache-tomcat-8.5.29/webapps/sample/index.html regexp="{{item}}" state=absent
+    with_items:
+      - <ul>
+      - <li>
+      - </ul>
+      - <p>This
+      - source
+      - outlined
+
+  - name: Customzing Tomcat Page
+    lineinfile:
+      path: /opt/tomcat/apache-tomcat-8.5.29/webapps/sample/index.html
+      regexp: ^<p>
+      line: <h1>If you want to learn more about Automation, you can start by reading and practicing automation tasks demonstrated in "Automation with Ansible - by Yogesh Raheja</h1>
+
+  - name: Inserting weblink for the book
+    lineinfile:
+      path: /opt/tomcat/apache-tomcat-8.5.29/webapps/sample/index.html
+      insertafter: <p>If
+      line: <a href="https://www.amazon.in/Automation-Ansible-Yogesh-Raheja/dp/8126570334/ref=sr_1_1?ie=UTF8&qid=1521534007&sr=8-1&keywords=yogesh+raheja" target="Automation with Ansible - By Yogesh Raheja">Automation with Ansible</a>
+
+  - name: Starting Tomcat
+    command: /opt/tomcat/apache-tomcat-8.5.29/bin/catalina.sh start

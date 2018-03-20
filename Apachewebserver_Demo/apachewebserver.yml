@@ -1,0 +1,14 @@
+---
+- name: Apache webserver deployment
+  hosts: all
+
+  tasks:
+  - name: Installing Apache packages
+    yum: name=httpd state=present
+
+  - name: Configuring Apache configuration files
+    copy: dest=/var/www/html/index.html content="This is a demo for Apache Webserver!"
+
+  - name: Starting Apache webservice
+    service: name=httpd enabled=yes state=started
+
