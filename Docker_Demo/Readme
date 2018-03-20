@@ -4,3 +4,8 @@ run below comamnd to install role and then run the role:
 
 ansible-galaxy install yogeshraheja.docker-test && ansible-playbook dockerrole.yml
 
+=====================
+
+Even if you want to build a demo website on container "docker" you can run a single command which have all of the necessary codes:
+
+ansible-galaxy install yogeshraheja.docker-test && ansible-playbook dockerrole.yml && sh build.sh
