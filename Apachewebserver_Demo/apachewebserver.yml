@@ -1,13 +1,34 @@
 ---
 - name: Apache webserver deployment
-  hosts: all
+  hosts: localhost
 
   tasks:
   - name: Installing Apache packages
     yum: name=httpd state=present
 
+  - name: Changing Listening port to 81
+    lineinfile:
+      path: /etc/httpd/conf/httpd.conf
+      regexp: "Listen 80"
+      line: Listen 81
+
   - name: Configuring Apache configuration files
-    copy: dest=/var/www/html/index.html content="This is a demo for Apache Webserver!"
+    copy: dest=/var/www/html/index.html content="<h1>This is a demo for Apache Webserver!</h1>"
+      
+  - name: Amending configuration file
+    lineinfile:
+      path: /var/www/html/index.html
+      line: <h1>Hello All, Welcome to Agile Gurugram 2018. My name is Yogesh Raheja and I am demonstarting the future for IT infrastructure vertical with DevOps - IaC</h1>
+      state: present
+
+  - name: Downloading Images for the UI
+    get_url: url=http://www.crmsearch.com/images/devops.gif dest=/var/www/html/
+
+  - name: Customzing Images for the UI
+    lineinfile:
+      path: /var/www/html/index.html
+      regexp: ^<img
+      line: <img src="devops.gif">
 
   - name: Starting Apache webservice
     service: name=httpd enabled=yes state=started
