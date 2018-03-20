@@ -1,0 +1,6 @@
+---
+- name: Running roles in play2
+  hosts: localhost
+
+  roles:
+    - yogeshraheja.docker-test

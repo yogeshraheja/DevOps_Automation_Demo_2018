@@ -1,0 +1,6 @@
+This playbook need Docker Role to be installed created by Yogesh Raheja, which is present on Ansible Galaxy:
+
+run below comamnd to install role and then run the role:
+
+ansible-galaxy install yogeshraheja.docker-test && ansible-playbook dockerrole.yml
+
