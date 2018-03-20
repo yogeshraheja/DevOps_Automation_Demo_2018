@@ -47,10 +47,10 @@
     file: path=/etc/nginx/nginx.conf state=absent
 
   - name: Creating nginx configuration for ELK stack
-    get_url: url=https://raw.githubusercontent.com/yogeshraheja/yogan/master/nginx.conf dest=/etc/nginx/
+    get_url: url=https://raw.githubusercontent.com/yogeshraheja/agilegurugram_2018/master/ELK_Demo/nginx.conf dest=/etc/nginx/
 
   - name: Changing ngnix.conf
-    get_url: url=https://raw.githubusercontent.com/yogeshraheja/yogan/master/kibana.conf dest=/etc/nginx/conf.d/
+    get_url: url=https://raw.githubusercontent.com/yogeshraheja/agilegurugram_2018/master/ELK_Demo/kibana.conf dest=/etc/nginx/conf.d/
  
   - name: Starting Elastic services
     service: name=elasticsearch state=started enabled=yes
