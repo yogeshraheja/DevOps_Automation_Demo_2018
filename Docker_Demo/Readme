@@ -9,3 +9,13 @@ ansible-galaxy install yogeshraheja.docker-test && ansible-playbook dockerrole.y
 Even if you want to build a demo website on container "docker" you can run a single command which have all of the necessary codes:
 
 ansible-galaxy install yogeshraheja.docker-test && ansible-playbook dockerrole.yml && sh build.sh
+
+=====================
+
+The same can be passed as a script in the Jenkins jobs:
+
+#!/bin/bash
+ansible-galaxy install yogeshraheja.docker-test 
+ansible-playbook Docker_Demo/dockerrole.yml 
+docker build -t yogeshtest Docker_Demo/. 
+docker run -dt -p 8088:80 yogeshtest
