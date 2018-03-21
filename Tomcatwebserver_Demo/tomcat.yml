@@ -23,7 +23,10 @@
     shell: cd /opt/tomcat; tar -xvzf apache-tomcat-8.5.29.tar.gz; cd apache-tomcat-8.5.29/bin/; chmod 777 startup.sh shutdown.sh catalina.sh
 
   - name: War deployment
-    shell: cd /opt/tomcat/apache-tomcat-8.5.29/webapps/; wget https://tomcat.apache.org/tomcat-8.0-doc/appdev/sample/sample.war; cd /opt/tomcat/apache-tomcat-8.5.29/bin; sleep 20
+    shell: cd /opt/tomcat/apache-tomcat-8.5.29/webapps/; wget https://tomcat.apache.org/tomcat-8.0-doc/appdev/sample/sample.war; cd /opt/tomcat/apache-tomcat-8.5.29/bin; sleep 30
+
+  - name: Starting Tomcat
+    command: /opt/tomcat/apache-tomcat-8.5.29/bin/catalina.sh start
 
   - name: Customzing Tomcat Page
     lineinfile:
@@ -62,5 +65,5 @@
       insertafter: <p>If
       line: <a href="https://www.amazon.in/Automation-Ansible-Yogesh-Raheja/dp/8126570334/ref=sr_1_1?ie=UTF8&qid=1521534007&sr=8-1&keywords=yogesh+raheja" target="Automation with Ansible - By Yogesh Raheja">Automation with Ansible</a>
 
-  - name: Starting Tomcat
-    command: /opt/tomcat/apache-tomcat-8.5.29/bin/catalina.sh start
+#  - name: Starting Tomcat
+#    command: /opt/tomcat/apache-tomcat-8.5.29/bin/catalina.sh start
