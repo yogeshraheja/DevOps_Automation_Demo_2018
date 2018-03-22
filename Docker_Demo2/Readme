@@ -1,0 +1,21 @@
+This playbook need Docker Role to be installed created by Yogesh Raheja, which is present on Ansible Galaxy:
+
+run below comamnd to install role and then run the role:
+
+ansible-galaxy install yogeshraheja.docker-test && ansible-playbook dockerrole.yml
+
+=====================
+
+Even if you want to build a demo website on container "docker" you can run a single command which have all of the necessary codes:
+
+ansible-galaxy install yogeshraheja.docker-test && ansible-playbook dockerrole.yml && sh build.sh
+
+=====================
+
+The same can be passed as a script in the Jenkins jobs:
+
+#!/bin/bash
+ansible-galaxy install yogeshraheja.docker-test 
+ansible-playbook Docker_Demo/dockerrole.yml 
+docker build -t yogeshtestone Docker_Demo2/.
+docker run -dt -p 8011:80 yogeshtestone
