@@ -18,7 +18,7 @@
       gpgkey: https://artifacts.elastic.co/GPG-KEY-elasticsearch
       enabled: yes 
 
-  - name: Install Elastic 
+  - name: Install Elastic Search, Logstash, Kibana, Nginx and all other dependency
     yum: 
       name: "{{item}}"
       state: present
