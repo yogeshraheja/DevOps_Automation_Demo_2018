@@ -1,6 +1,8 @@
 ---
 - name: Tomcat web servr deployment
   hosts: localhost
+  remote_user: jenkins
+  become: true
 
   tasks:
 
