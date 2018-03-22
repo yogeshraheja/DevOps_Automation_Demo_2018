@@ -4,7 +4,7 @@ RUN mkdir /data
 RUN yum -y install httpd php wget
 RUN echo "<h1>We are here to demonstrate The power of Docker</h1>" > /var/www/html/index.html
 RUN cd /var/www/html/ && wget https://www.packtpub.com/sites/default/files/new_blog_images/67/docker-logo.gif && sleep 30
-RUN echo "<img src="docker-logo.gif">" >> index.html
+RUN echo "<img src="docker-logo.gif">" >> /var/www/html/index.html
 EXPOSE 80
 VOLUME /var/log /data
 RUN echo "httpd" >> /root/.bashrc
