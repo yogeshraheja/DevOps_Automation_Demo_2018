@@ -34,7 +34,7 @@
     lineinfile:
       path: /opt/tomcat/apache-tomcat-8.5.29/webapps/sample/index.html
       regexp: ^<h1>
-      line: <h1>Hello All, Welcome to Agile Gurugram 2018. My name is Yogesh Raheja and I am demonstarting the future for IT infrastructure vertical with DevOps - IaC</h1>
+      line: <h1>Hello All, Welcome to the World of Automation. My name is Yogesh Raheja and I am demonstarting the future for IT infrastructure vertical with DevOps - IaC</h1>
 
   - name: Downloading Images for the UI
     get_url: url=http://www.lmcsoftwaresolutions.com/image/devops_anim.gif dest=/opt/tomcat/apache-tomcat-8.5.29/webapps/sample/images
