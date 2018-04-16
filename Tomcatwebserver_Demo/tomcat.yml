@@ -19,7 +19,7 @@
     file: name=/opt/tomcat state=directory
 
   - name: Downloading Tomcat Binaries
-    get_url: url=http://www-eu.apache.org/dist/tomcat/tomcat-8/v8.5.29/bin/apache-tomcat-8.5.29.tar.gz dest=/opt/tomcat
+    get_url: url=http://mirror.23media.de/apache/tomcat/tomcat-8/v8.5.29/bin/apache-tomcat-8.5.29.tar.gz dest=/opt/tomcat
 
   - name: Extracting Tomcat
     shell: cd /opt/tomcat; tar -xvzf apache-tomcat-8.5.29.tar.gz; cd apache-tomcat-8.5.29/bin/; chmod 777 startup.sh shutdown.sh catalina.sh
