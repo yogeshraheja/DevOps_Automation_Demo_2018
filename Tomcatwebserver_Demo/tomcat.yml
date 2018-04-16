@@ -28,7 +28,7 @@
     shell: cd /opt/tomcat/apache-tomcat-8.5.29/webapps/; wget https://tomcat.apache.org/tomcat-8.0-doc/appdev/sample/sample.war; cd /opt/tomcat/apache-tomcat-8.5.29/bin; sleep 30
 
   - name: Starting Tomcat
-    command: sudo /opt/tomcat/apache-tomcat-8.5.29/bin/catalina.sh start
+    command: /opt/tomcat/apache-tomcat-8.5.29/bin/catalina.sh start
 
   - name: Customzing Tomcat Page
     lineinfile:
