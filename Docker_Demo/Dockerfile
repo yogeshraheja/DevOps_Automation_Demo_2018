@@ -1,4 +1,3 @@
-# My test
 FROM centos
 MAINTAINER yogesh raheja yogesh.10d@gmail.com
 RUN mkdir /data
