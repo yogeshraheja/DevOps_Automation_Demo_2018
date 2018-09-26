@@ -1,3 +1,4 @@
+# My test
 FROM centos
 MAINTAINER yogesh raheja yogesh.10d@gmail.com
 RUN mkdir /data
@@ -7,3 +8,4 @@ EXPOSE 80
 VOLUME /var/log /data
 RUN echo "httpd" >> /root/.bashrc
 CMD ["/bin/bash"]
+
