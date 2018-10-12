@@ -1,6 +1,7 @@
 ---
 - name: Apache webserver deployment
-  hosts: all
+  hosts: localhost
+  connection: local
 
   tasks:
   - name: Installing Apache packages
