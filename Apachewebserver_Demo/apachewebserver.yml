@@ -19,7 +19,7 @@
   - name: Amending configuration file
     lineinfile:
       path: /var/www/html/index.html
-      line: <h1>Hello All, Welcome to the World of Automation!. My name is Yogesh Raheja and I am demonstarting the future for IT infrastructure vertical with DevOps - IaC</h1>
+      line: <h1>Hello All, Welcome to the World of Automation!. My name is Yogesh Raheja and I am demonstarting the future for IT infrastructure vertical with DevOps - IaC with the magic of Jenkins CI CD pipeline</h1>
       state: present
 
   - name: Downloading Images for the UI
