@@ -1,7 +1,7 @@
 ---
 - name: Apache webserver deployment
-  hosts: localhost
-  connection: local
+  hosts: ansibleclient
+#  connection: local
 
   tasks:
   - name: Installing Apache packages
