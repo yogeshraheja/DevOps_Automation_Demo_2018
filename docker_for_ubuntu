@@ -1,0 +1,31 @@
+---
+- name: "Docker Installation for Docker"
+  hosts: "all"
+
+  tasks:
+    - name: Pre-requisites
+      apt: name=apt-transport-https state=present
+    - name: Pre-requisites
+      apt: name=ca-certificates state=present
+    - name: Pre-requisites
+      apt: name=curl state=present
+    - name: Pre-requisites
+      apt: name=software-properties-common state=present
+    - name: Adding repo
+      apt_key: id=0EBFCD88 url=https://download.docker.com/linux/ubuntu/gpg state=present
+#      shell: curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+    - name: Adding repo
+      apt_repository:
+        repo: deb [arch=amd64] https://download.docker.com/linux/ubuntu xenial stable
+        state: present
+    - name: Refresh Repo
+      command: "apt-get update"
+    - name: Installing Docker
+      apt: name=docker-ce state=present
+    - name: "Starting Docker services"
+      service: name=docker state=started enabled=yes
+    - name: Test
+      command: "docker run hello-world"
+      register: output
+    - name: Redirecting outputs
+      debug: var=output
