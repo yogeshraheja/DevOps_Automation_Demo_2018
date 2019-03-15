@@ -1,0 +1,22 @@
+version: '3.7'
+services:
+  web:
+    build: .
+    ports:
+      - "5000:5000"
+    networks:
+      - yogesh-net
+
+    volumes:
+      - yogesh-vol:/code
+
+  redis:
+    image: "redis:alpine"
+    networks:
+      - yogesh-net
+
+networks:
+  yogesh-net:
+
+volumes:
+  yogesh-vol:
